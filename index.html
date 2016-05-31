@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="quoteBook">
+<head>
+  <meta charset=utf-8>
+  <title>`echo $TM_FILENAME|cut -d. -f1`</title>
+  <link href="styles.css" rel="stylesheet"></link>
+</head>
+<body ng-controller="quoteController">
+<h1>Quote Book!</h1>
+    <div class="newquotebox">
+      <form>
+        <input type="text" placeholder="Add your quote." ng-model="newQuote.text">
+        <input type="text" placeholder="Add your author." ng-model="newQuote.author">
+        <button ng-click="addQuote(newQuote)" type="submit">Add Quote</button>
+        </div>
+
+    <div class="searchquote">
+      <label>Search: </label><input type="text" placeholder="Search" ng-model="quoteFilter">
+      <button ng-click="saveData(quotes)">Save</save>
+    </div>
+
+    <div class="quote" ng-repeat="quote in quotes | filter: quoteFilter"><p>{{quote.text}}</p><span>{{quote.author}}</span>
+        <button ng-click="deleteQuote($index)">X</button>
+    </form>
+    </div>
+
+    <button ng-click="saveData(quotes)">Save</save>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/quoteController.js"></script>
+    <script src="app/quoteService.js"></script>
+</body>
+</html>
